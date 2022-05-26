@@ -21,11 +21,11 @@ import java.net.Socket
 import java.util.concurrent.atomic.AtomicBoolean
 
 class TcpClientService : Service() {
+
     private val working = AtomicBoolean(true)
     private var socket: Socket? = null
     private var dataInputStream: DataInputStream? = null
     private var dataOutputStream: DataOutputStream? = null
-    private val message = "Hello Server"
     private val runnable = Runnable {
         try {
             val ip = InetAddress.getByName(IP)
@@ -68,9 +68,30 @@ class TcpClientService : Service() {
                 if (writerMessage != null) {
                     write(writerMessage)
                 }
+            } else if (ACTION_CLOSE_SERVICE == action) {
+                closeSocket()
             }
         }
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    private fun closeSocket() {
+        working.set(false)
+        try {
+            dataOutputStream?.close()
+        } catch (e: Exception) {
+            e.localizedMessage
+        }
+        try {
+            dataInputStream?.close()
+        } catch (e: Exception) {
+            e.localizedMessage
+        }
+        try {
+            socket?.close()
+        } catch (e: Exception) {
+            e.localizedMessage
+        }
     }
 
     override fun onBind(intent: Intent): IBinder? {
@@ -135,7 +156,9 @@ class TcpClientService : Service() {
         const val KEY_CODE_STATE: String = "service_tcp_code"
         const val KEY_VALUE_STATE: String = "service_tcp_value"
         const val STATE_CODE_READ: Int = 1001
+        const val STATE_CODE_CLOSE: Int = 1002
         private const val ACTION_WRITE_SERVICE = "ACTION_WRITE_SERVICE"
+        private const val ACTION_CLOSE_SERVICE = "ACTION_CLOSE_SERVICE"
         private const val ACTION_STOP_SERVICE = "ACTION_STOP_SERVICE"
         private const val KEY_MESSAGE = "KEY_MESSAGE"
         var IP = ""
@@ -166,6 +189,21 @@ class TcpClientService : Service() {
                 ctx.startForegroundService(Intent(ctx, TcpClientService::class.java))
             } else {
                 ctx.startService(Intent(ctx, TcpClientService::class.java))
+            }
+        }
+
+        fun close(ctx: Context) {
+            try {
+                val intent = Intent(ctx, TcpClientService::class.java)
+                intent.action = ACTION_CLOSE_SERVICE
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    ctx.startForegroundService(intent)
+                } else {
+                    ctx.startService(intent)
+                }
+            } catch (e : Exception) {
+                e.printStackTrace()
+                Log.e(TAG, "try write:")
             }
         }
     }

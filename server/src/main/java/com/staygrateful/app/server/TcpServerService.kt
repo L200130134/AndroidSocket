@@ -39,8 +39,12 @@ class TcpServerService : Service() {
                     val dataOutputStream = DataOutputStream(socket.getOutputStream())
 
                     // Use threads for each client to communicate with them simultaneously
-                    mTcpClientHandler = TcpClientHandler(dataInputStream, dataOutputStream) {
-                        sendMessageToUi(STATE_CODE_READ, it)
+                    mTcpClientHandler = TcpClientHandler(dataInputStream, dataOutputStream) { msg ->
+                        sendMessageToUi(STATE_CODE_READ, msg)
+                        if (msg == "close") {
+                            working.set(false)
+                            serverSocket!!.close()
+                        }
                     }
                     mTcpClientHandler?.start()
                 } else {
