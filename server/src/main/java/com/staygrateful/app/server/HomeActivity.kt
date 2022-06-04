@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.staygrateful.app.server.databinding.ActivityHomeBinding
@@ -13,6 +14,7 @@ import com.staygrateful.app.server.utils.UtilsNetwork
 
 class HomeActivity : AppCompatActivity() {
 
+    private var isConnected: Boolean = false
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +27,15 @@ class HomeActivity : AppCompatActivity() {
         bindView()
 
         bindEvent()
+    }
 
-        startServerServices()
+    override fun onResume() {
+        super.onResume()
+        bindInfoView(isConnected)
     }
 
     private fun bindView() {
-        bindInfoView(false)
+        bindInfoView(isConnected)
     }
 
     private fun bindInfoView(connected: Boolean) {
@@ -43,6 +48,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun bindEvent() {
+        binding.btnStart.setOnClickListener {
+            startServerServices()
+            binding.btnStart.visibility = View.GONE
+        }
         binding.btnSend.setOnClickListener {
             sendMessageToClient()
         }
@@ -88,6 +97,7 @@ class HomeActivity : AppCompatActivity() {
                 val data = intent.getSerializableExtra(TcpServerService.KEY_VALUE_STATE)
 
                 if (code == TcpServerService.STATE_CODE_CONNECTED) {
+                    isConnected = true
                     bindInfoView(true)
                 } else if (code == TcpServerService.STATE_CODE_READ) {
                     val text = binding.tvLog.text.toString()

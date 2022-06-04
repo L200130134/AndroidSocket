@@ -81,12 +81,17 @@ class TcpServerService : Service() {
     }
 
     override fun onCreate() {
+        applicationContext.showToast("Server service is started")
         startMeForeground()
         Thread(runnable).start()
     }
 
     override fun onDestroy() {
+        applicationContext.showToast("Server service is stopped")
         working.set(false)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            stopForeground(true) //true will remove notification
+        }
     }
 
     private fun write(string: String) {
@@ -131,7 +136,7 @@ class TcpServerService : Service() {
 
     companion object {
         val TAG = TcpServerService::class.java.simpleName
-        const val PORT = 9876
+        const val PORT = 5000
         const val SERVICE_NAME: String = "service_tcp_server"
         const val KEY_CODE_STATE: String = "service_tcp_code"
         const val KEY_VALUE_STATE: String = "service_tcp_value"

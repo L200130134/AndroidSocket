@@ -163,7 +163,7 @@ class TcpClientService : Service() {
         private const val KEY_MESSAGE = "KEY_MESSAGE"
         var IP = ""
             private set
-        var PORT = 9876
+        var PORT = 5000
             private set
 
         fun write(context: Context, message: String) {
@@ -178,7 +178,6 @@ class TcpClientService : Service() {
                 }
             } catch (e : Exception) {
                 e.printStackTrace()
-                Log.e(TAG, "try write:")
             }
         }
 
@@ -203,7 +202,6 @@ class TcpClientService : Service() {
                 }
             } catch (e : Exception) {
                 e.printStackTrace()
-                Log.e(TAG, "try write:")
             }
         }
     }

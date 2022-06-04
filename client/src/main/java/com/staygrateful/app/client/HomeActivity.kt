@@ -4,9 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.os.Build
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.staygrateful.app.client.databinding.ActivityHomeBinding
@@ -36,7 +34,7 @@ class HomeActivity : AppCompatActivity() {
             sendMessageToServer()
         }
         binding.btnConnectServer.setOnClickListener {
-            startServerServices()
+            startClientServices()
         }
     }
 
@@ -48,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
         binding.inputMsg.setText("")
     }
 
-    private fun startServerServices() {
+    private fun startClientServices() {
         val ip = binding.inputIpAddress.text.toString()
         val port = binding.inputPort.text.toString().toInt()
         TcpClientService.start(
@@ -82,8 +80,6 @@ class HomeActivity : AppCompatActivity() {
                 if (code == TcpClientService.STATE_CODE_READ) {
                     val text = binding.tvLog.text.toString()
                     binding.tvLog.text = "$text\nServer : $data".trim()
-                    /*Toast.makeText(this@HomeActivity,
-                        "Read : $data", Toast.LENGTH_SHORT).show()*/
                 }
             }
         }

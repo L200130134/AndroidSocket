@@ -51,7 +51,6 @@
             android:paddingEnd="10dp"
             android:text="Connect to Server" />
 
-
     </LinearLayout>
 
     <ScrollView
