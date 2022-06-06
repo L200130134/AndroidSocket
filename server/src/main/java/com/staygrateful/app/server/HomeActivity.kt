@@ -10,6 +10,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.staygrateful.app.server.databinding.ActivityHomeBinding
+import com.staygrateful.app.server.extension.fromJson
+import com.staygrateful.app.server.extension.showToast
+import com.staygrateful.app.server.model.UserRasPi
+import com.staygrateful.app.server.utils.ResourceUtils
 import com.staygrateful.app.server.utils.UtilsNetwork
 
 class HomeActivity : AppCompatActivity() {
@@ -94,16 +98,26 @@ class HomeActivity : AppCompatActivity() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent != null) {
                 val code = intent.getIntExtra(TcpServerService.KEY_CODE_STATE, 0)
-                val data = intent.getSerializableExtra(TcpServerService.KEY_VALUE_STATE)
+                val data = intent.getStringExtra(TcpServerService.KEY_VALUE_STATE)
 
                 if (code == TcpServerService.STATE_CODE_CONNECTED) {
                     isConnected = true
                     bindInfoView(true)
                 } else if (code == TcpServerService.STATE_CODE_READ) {
+                    val user = data.fromJson(UserRasPi::class.java)
+                    if (user != null) {
+                        this@HomeActivity.showToast("Received user data : ${user.name}")
+                        sendSampleJson()
+                    }
                     val text = binding.tvLog.text.toString()
                     binding.tvLog.text = "$text\nClient : $data".trim()
                 }
             }
         }
+    }
+
+    private fun sendSampleJson() {
+        val jsonRaw = ResourceUtils.getString(this, R.raw.weighing_sample)
+        TcpServerService.write(this@HomeActivity, jsonRaw)
     }
 }

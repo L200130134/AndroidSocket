@@ -1,6 +1,7 @@
 package com.staygrateful.app.server
 
 import android.util.Log
+import com.staygrateful.app.server.model.UserRasPi
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.IOException

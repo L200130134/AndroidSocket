@@ -12,6 +12,7 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.staygrateful.app.server.extension.showToast
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.IOException

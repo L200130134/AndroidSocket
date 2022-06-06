@@ -1,0 +1,204 @@
+{
+    "nama": "User Server",
+    "umur": 30,
+    "jenis_kelamin": "Pria",
+    "tinggi": 170,
+    "berat": 62.5,
+    "desc": "Berat Badan anda Normal nih. Ayo pertahankan kondisi ini dengan memperbanyak mengkonsumsi makanan 4 sehat 5 sempurna",
+    "impedance": 5000,
+    "BMI": 20.1,
+    "trigger_tiang_tinggi": "false",
+    "data": [
+        {
+            "title": "IMT",
+            "desc": "Obesitas dapat dinilai hanya dengan nilai IMT. Orang-orang dapat memiliki lebih banyak lemak daripada otot dengan nilai IMT yang sangat tinggi dan dapat diklasifikasikan sebagai obesitas.",
+            "nilai": 20.0,
+            "data": [
+                {
+                    "nilai": 18.5,
+                    "keterangan": "Rendah",
+                    "warna": "0f80d1"
+                },
+                {
+                    "nilai": 25.0,
+                    "keterangan": "Normal",
+                    "warna": "14e82d"
+                },
+                {
+                    "nilai": 28.0,
+                    "keterangan": "Meningkat",
+                    "warna": "e8e413"
+                },
+                {
+                    "nilai": 32.0,
+                    "keterangan": "Tinggi",
+                    "warna": "e8810a"
+                },
+                {
+                    "nilai": 32.1,
+                    "keterangan": "Sangat Tinggi",
+                    "warna": "e80a0a"
+                }
+            ]
+        },
+        {
+            "title": "metabolisme",
+            "desc": "deskripsi data metabolisme",
+            "nilai": 500,
+            "data": [
+                {
+                    "nilai": 1248,
+                    "warna": "e8e413",
+                    "keterangan": "Tidak Mencukupi"
+                },
+                {
+                    "nilai": 1249,
+                    "keterangan": "Mencapai Target",
+                    "warna": "e80a0a"
+                }
+            ]
+        },
+        {
+            "title": "otot",
+            "desc": "Nilai Otot standart adalah 49.40Kg - 59.50Kg. Anda sudah sangat cukup memiliki76.48758620689655Kg. Lakukan latihan aerobik untuk meningkatkan lagi massa Otot. Pastikan ada cukup asupan kalori sebelum dan sesudah latihan.",
+            "nilai": 40.5,
+            "data": [
+                {
+                    "nilai": 49.4,
+                    "keterangan": "Tidak Mencukupi",
+                    "warna": "e8810a"
+                },
+                {
+                    "nilai": 59.5,
+                    "keterangan": "Normal",
+                    "warna": "14e82d"
+                },
+                {
+                    "nilai": 59.6,
+                    "keterangan": "Baik",
+                    "warna": "087114"
+                }
+            ]
+        },
+        {
+            "title": "protein",
+            "desc": "Anda memiliki protein yang tidak mencukupi untuk kestabilan tubuh. Anda dapat menambahkan protein yang cukup untuk menjaga kesehatan tubuh Anda dengan memperbanyak makanan sayuran yang mengandung serat",
+            "nilai": 15.3,
+            "data": [
+                {
+                    "nilai": 16,
+                    "keterangan": "Tidak Mencukupi",
+                    "warna": "e8e413"
+                },
+                {
+                    "nilai": 20,
+                    "keterangan": "Normal",
+                    "warna": "14e82d"
+                },
+                {
+                    "nilai": 20.1,
+                    "keterangan": "Baik",
+                    "warna": "087114"
+                }
+            ]
+        },
+        {
+            "title": "lemak",
+            "desc": "Kadar lemak tubuh anda rendah. Lemak adalah zat yang penting bagi sel dan sistem saraf. Jika kadar lemak tubuh berkurang secara drastis dapat menyebabkan gangguan endokrin.",
+            "nilai": 21.2,
+            "data": [
+                {
+                    "nilai": 11.0,
+                    "keterangan": "Sangat Rendah",
+                    "warna": "0f80d1"
+                },
+                {
+                    "nilai": 17.0,
+                    "keterangan": "Rendah",
+                    "warna": "0e4268"
+                },
+                {
+                    "nilai": 22.0,
+                    "keterangan": "Normal",
+                    "warna": "14e82d"
+                },
+                {
+                    "nilai": 27.0,
+                    "keterangan": "Meningkat",
+                    "warna": "e8e413"
+                },
+                {
+                    "nilai": 27.1,
+                    "keterangan": " Tinggi",
+                    "warna": "e8810a"
+                }
+            ]
+        },
+        {
+            "title": "air",
+            "desc": "Anda memiliki kadar air yang mencukupi untuk kestabilan tubuh. Tingkatkan terus kadar air dalam tubuh anda untuk menjaga kesehatan tubuh Anda dengan memperbanyak minum air mineral dan makan buah yang mengandung banyak air",
+            "nilai": 55.8,
+            "data": [
+                {
+                    "nilai": 55.0,
+                    "keterangan": "Tidak Mencukupi",
+                    "warna": "e8e413"
+                },
+                {
+                    "nilai": 65.1,
+                    "keterangan": "Normal",
+                    "warna": "14e82d"
+                },
+                {
+                    "nilai": 65.2,
+                    "keterangan": "Baik",
+                    "warna": "087114"
+                }
+            ]
+        },
+        {
+            "title": "lemak visceral",
+            "desc": "Lemak Visceral adalah lemak yang diakumulasi di antara celah organ. Kadar Lemak Visceral yang normal dapat meningkatkan resiko terkena penyakit jantung, darah tinggi, hiperlipidemia dan penyakit lainnya. Tingkatkan olahraga minimal 20 menit setiap hari untuk menjaga keseimbangan lemak visceral Anda",
+            "nilai": 1.4,
+            "data": [
+                {
+                    "nilai": 10,
+                    "keterangan": "Normal",
+                    "warna": "14e82d"
+                },
+                {
+                    "nilai": 15,
+                    "keterangan": "Tinggi",
+                    "warna": "e8e413"
+                },
+                {
+                    "nilai": 15.1,
+                    "keterangan": "Sangat Tinggi",
+                    "warna": "e8810a"
+                }
+            ]
+        },
+        {
+            "title": "kepadatan tulang",
+            "desc": "deskripsi data metabolisme deskripsi data IMT ygy, jadi harus hati2 kalian nich asek asek asek asek asek asek asek asek asek asek asek asek asek asek asek deskripsi data IMT ygy, jadi harus hati2 kalian nich asek asek asek asek asek asek asek asek asek asek asek asek asek asek asek",
+            "nilai": 1,
+            "data": [
+                {
+                    "nilai": 1.6,
+                    "keterangan": "Tidak Mencukupi",
+                    "warna": "14e82d"
+                },
+                {
+                    "nilai": 3.9,
+                    "keterangan": "Normal",
+                    "warna": "e8e413"
+                },
+                {
+                    "nilai": 4,
+                    "keterangan": "Baik",
+                    "warna": "e8810a"
+                }
+            ]
+        }
+    ]
+}

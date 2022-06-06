@@ -1,4 +1,4 @@
-package com.staygrateful.app.server
+package com.staygrateful.app.server.extension
 
 import android.app.Activity
 import android.content.Context
